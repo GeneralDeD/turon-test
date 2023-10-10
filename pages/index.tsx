@@ -1,13 +1,36 @@
-import { $axios } from "@/services";
+import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
-export default function Home() {
-  const testReq = async () => {
-    const res = await $axios.get("/movie-list?page=1&items=20");
+import { getMovListServ } from "@/services";
+import { Banner, Loading, MovieCards } from "@/components";
+import { Pagination } from "@/components/pagination";
 
-    console.log(res);
-  };
+const Home = () => {
+  const [filter, setFilter] = useState({
+    page: 1,
+    items: 10,
+  });
 
-  testReq();
+  const { data, isLoading } = useQuery({
+    queryFn: () => getMovListServ({ page: filter.page, items: filter.items }),
+    queryKey: ["getMovListServ", filter],
+  });
 
-  return <main>Test</main>;
-}
+  return (
+    <main>
+      <Banner title="Главная" />
+      {isLoading ? (
+        <Loading />
+      ) : (
+        data?.data.movies.length && (
+          <>
+            <MovieCards movies={data?.data.movies} />
+            <Pagination currPage={filter.page} lastPage={data.data.lastPage} setFilter={setFilter} />
+          </>
+        )
+      )}
+    </main>
+  );
+};
+
+export default Home;

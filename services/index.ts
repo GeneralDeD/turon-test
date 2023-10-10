@@ -1,1 +1,1 @@
-export { default as $axios } from "./base";
+export { getMovListServ } from "./MovieServices";
