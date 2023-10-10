@@ -1,17 +1,22 @@
 import { Dispatch, SetStateAction } from "react";
+
 import { Container } from "..";
 
+import { PAGINATION_LIMIT_OPTIONS } from "@/consts";
+import { IFilter } from "@/types";
+
 interface IPagination {
-  currPage: number;
   lastPage: number;
-  setFilter: Dispatch<SetStateAction<{ page: number; items: number }>>;
+  filter: IFilter;
+  setFilter: Dispatch<SetStateAction<IFilter>>;
 }
 
-const Pagination = ({ currPage, lastPage, setFilter }: IPagination) => {
+const Pagination = ({ lastPage, filter, setFilter }: IPagination) => {
+  const currPage = filter.page;
   let check = true;
 
   return (
-    <Container>
+    <Container className="flex items-center justify-between">
       <div className="flex items-center gap-3">
         <div
           className={`w-8 h-8 rounded-md cursor-pointer flex items-center justify-center ${
@@ -56,6 +61,18 @@ const Pagination = ({ currPage, lastPage, setFilter }: IPagination) => {
         >
           {">"}
         </div>
+      </div>
+      <div>
+        <select
+          className="p-1 px-3 cursor-pointer bg-gray-400 rounded-md"
+          onChange={(e) => setFilter((prev) => ({ ...prev, limit: +e.target.value }))}
+        >
+          {PAGINATION_LIMIT_OPTIONS.map((option) => (
+            <option key={option} selected={filter.limit === option}>
+              {option}
+            </option>
+          ))}
+        </select>
       </div>
     </Container>
   );

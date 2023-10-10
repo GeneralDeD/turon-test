@@ -1,6 +1,6 @@
 import { objToQuery } from "@/utils";
 import { headerInterceptor } from "./base";
-import { IGetMovListServ } from "@/types/MovieTypes";
+import { IGetMovListServ } from "@/types/IMovie";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 

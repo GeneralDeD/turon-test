@@ -1,4 +1,4 @@
-import { IMovie } from "@/types/MovieTypes";
+import { IMovie } from "@/types/IMovie";
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "..";

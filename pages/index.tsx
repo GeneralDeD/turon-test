@@ -8,11 +8,11 @@ import { Pagination } from "@/components/pagination";
 const Home = () => {
   const [filter, setFilter] = useState({
     page: 1,
-    items: 10,
+    limit: 10,
   });
 
   const { data, isLoading } = useQuery({
-    queryFn: () => getMovListServ({ page: filter.page, items: filter.items }),
+    queryFn: () => getMovListServ({ page: filter.page, items: filter.limit }),
     queryKey: ["getMovListServ", filter],
   });
 
@@ -25,7 +25,7 @@ const Home = () => {
         data?.data.movies.length && (
           <>
             <MovieCards movies={data?.data.movies} />
-            <Pagination currPage={filter.page} lastPage={data.data.lastPage} setFilter={setFilter} />
+            <Pagination lastPage={data.data.lastPage} filter={filter} setFilter={setFilter} />
           </>
         )
       )}
