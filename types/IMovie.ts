@@ -16,8 +16,8 @@ export interface IMovListData {
 export interface IMovie {
   id: number;
   moduleId: number;
-  moduleSlug: string;
   cardType: string;
+  moduleSlug: string;
   poster: string;
   title: string;
   titleEn: string;
@@ -28,18 +28,52 @@ export interface IMovie {
   isFree: boolean;
   isNew: boolean;
   isFavourite: boolean;
-  countries: ICountry[];
-  genres: IGenre[];
+  countries: ISlugTitle[];
+  genres: ISlugTitle[];
 }
 
-export interface ICountry {
+export interface ISlugTitle {
   id: number;
   slug: string;
   title: string;
 }
 
-export interface IGenre {
+export interface IGetOneMovServ {
+  status: boolean;
+  code: number;
+  message: string;
+  data: IData;
+}
+
+export interface IData extends Omit<IMovie, "moduleSlug" | "quality" | "isNew"> {
+  description: string;
+  movieSlug: string;
+  budget: string;
+  slogan: string;
+  uploadTime: number;
+  rating: IRating;
+  people: IPeople[];
+  actors: IPeopleItem[];
+}
+
+export interface IRating {
+  kp: IRatingItem;
+  imdb: IRatingItem;
+}
+
+export interface IRatingItem {
+  rating: number;
+  count: number;
+}
+
+export interface IPeople {
+  post: string;
+  employees: IPeopleItem[];
+}
+
+export interface IPeopleItem {
   id: number;
-  slug: string;
-  title: string;
+  fullName: string;
+  fullNameEn: string;
+  photo?: string;
 }

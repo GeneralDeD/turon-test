@@ -10,13 +10,21 @@ export type IBreadcrumb = {
 
 const Breadcrumb = ({ data = [] }: IBreadcrumb) => {
   return (
-    <div>
-      <Link href={LINKS.HOME}>Главная</Link>
+    <div className="flex gap-2 mb-5">
+      <>
+        <Link href={LINKS.HOME} className="underline">
+          Главная
+        </Link>
+        <span>{">"}</span>
+      </>
       {data.map((item) =>
         item?.link ? (
-          <Link href={item.link} key={item.title}>
-            {item.title}
-          </Link>
+          <>
+            <Link href={item.link} key={item.title}>
+              {item.title}
+            </Link>
+            <span>{">"}</span>
+          </>
         ) : (
           <a key={item.title}>{item.title}</a>
         )

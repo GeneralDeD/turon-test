@@ -1,4 +1,6 @@
-export { Container } from "./container";
-export { MovieCards } from "./movieCards";
-export { Loading } from "./loading";
 export { Banner } from "./banner";
+export { Container } from "./container";
+export { Loading } from "./loading";
+export { MovieCards } from "./movieCards";
+export { MovieDetails } from "./movieDetails";
+export { Pagination } from "./pagination";

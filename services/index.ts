@@ -1,1 +1,1 @@
-export { getMovListServ } from "./MovieServices";
+export { getMovListServ, getOneMovServ } from "./MovieServices";

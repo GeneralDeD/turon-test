@@ -1,6 +1,7 @@
-import { objToQuery } from "@/utils";
 import { headerInterceptor } from "./base";
-import { IGetMovListServ } from "@/types/IMovie";
+
+import { IGetMovListServ, IGetOneMovServ } from "@/types";
+import { objToQuery } from "@/utils";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -28,7 +29,7 @@ export const getOneMovServ = async (id: number) => {
       method: "GET",
       headers: headerInterceptor,
     });
-    return response.json();
+    return response.json() as Promise<IGetOneMovServ>;
   } catch (err) {
     throw err;
   }

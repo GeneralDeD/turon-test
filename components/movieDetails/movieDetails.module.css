@@ -1,0 +1,11 @@
+.movieDetails {
+  @apply w-full text-left;
+}
+
+.movieDetails th {
+  @apply w-1/3 align-top p-1;
+}
+
+.movieDetails td {
+  @apply w-4/5 p-1;
+}

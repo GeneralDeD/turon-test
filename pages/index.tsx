@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
+import { Banner, Loading, MovieCards, Pagination } from "@/components";
+
 import { getMovListServ } from "@/services";
-import { Banner, Loading, MovieCards } from "@/components";
-import { Pagination } from "@/components/pagination";
 
 const Home = () => {
   const [filter, setFilter] = useState({
@@ -19,6 +19,7 @@ const Home = () => {
   return (
     <main>
       <Banner title="Главная" />
+
       {isLoading ? (
         <Loading />
       ) : (
