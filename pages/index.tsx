@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import { Banner, Loading, MovieCards, Pagination } from "@/components";
@@ -15,6 +15,10 @@ const Home = () => {
     queryFn: () => getMovListServ({ page: filter.page, items: filter.limit }),
     queryKey: ["getMovListServ", filter],
   });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [data]);
 
   return (
     <main>

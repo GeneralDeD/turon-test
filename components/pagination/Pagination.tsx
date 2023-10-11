@@ -48,7 +48,7 @@ const Pagination = ({ lastPage, filter, setFilter }: IPagination) => {
             } else {
               if (check) {
                 check = false;
-                return <div className={` df_alc_jcc`}>...</div>;
+                return <div key={i}>...</div>;
               }
             }
           })}
@@ -64,7 +64,7 @@ const Pagination = ({ lastPage, filter, setFilter }: IPagination) => {
       </div>
       <div>
         <select
-          className="p-1 px-3 cursor-pointer bg-gray-400 rounded-md"
+          className="p-1 px-3 cursor-pointer bg-gray-200 rounded-md"
           onChange={(e) => setFilter((prev) => ({ ...prev, limit: +e.target.value }))}
         >
           {PAGINATION_LIMIT_OPTIONS.map((option) => (

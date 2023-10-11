@@ -51,7 +51,7 @@ const MovieItem = ({ data }: IMovieItem) => {
         <p>{data.description}</p>
       </Container>
 
-      <Container className="py-5">
+      <Container className="pt-5">
         <iframe
           width="560"
           height="315"
